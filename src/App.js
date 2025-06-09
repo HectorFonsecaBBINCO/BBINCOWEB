@@ -1,18 +1,29 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
+import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import './App.css';
 import About from './About';
 
+
+
 function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="navbar">
+    <nav className={`navbar${scrolled ? " navbar-scrolled" : ""}`}>
       <div className="navbar-logo">
         <img src="bbinco_no_Fondo.png" alt="Logo" style={{ height: "40px" }} />
       </div>
       <div className="navbar-links">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
+        <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>About</NavLink>
         <a href="/contact">Contact</a>
       </div>
     </nav>
@@ -29,13 +40,24 @@ function Footer() {
 
 function Home() {
   return (
-    <header className="App-header">
-      <img src="bbinco.jpeg" className="App-logo" alt="logo" />
-      <p>
-BROADBAND INTEGRATION COMPANY 
-      </p>
-    
-    </header>
+    <main>
+      <header className="App-header">
+        <img src="bbinco.jpeg" className="App-logo" alt="logo" />
+        <p>BROADBAND INTEGRATION COMPANY</p>
+      </header>
+      <section style={{ minHeight: "60vh", padding: "2rem", background: "#f5f5f5" }}>
+        <h2>Sección 1</h2>
+        <p>Contenido de la sección 1...</p>
+      </section>
+      <section style={{ minHeight: "60vh", padding: "2rem", background: "#e0e0e0" }}>
+        <h2>Sección 2</h2>
+        <p>Contenido de la sección 2...</p>
+      </section>
+      <section style={{ minHeight: "60vh", padding: "2rem", background: "#d0d0d0" }}>
+        <h2>Sección 3</h2>
+        <p>Contenido de la sección 3...</p>
+      </section>
+    </main>
   );
 }
 
