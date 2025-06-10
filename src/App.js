@@ -20,7 +20,7 @@ function Navbar() {
   return (
     <nav className={`navbar${scrolled ? " navbar-scrolled" : ""}`}>
       <div className="navbar-logo">
-        <img src="bbinco_no_Fondo.png" alt="Logo" style={{ height: "100px"}} />
+        <img src="logos/lutron logo.png" alt="Logo" style={{ height: "100px"}} />
       </div>
       <div className="navbar-links">
         <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
