@@ -5,7 +5,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import About from './About';
 
 
-
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -17,19 +16,42 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-return (
-  // ...existing code...
-<nav className={`navbar${scrolled ? " navbar-scrolled" : ""}`}>
- 
+  return (
+    <nav className={`navbar${scrolled ? " navbar-scrolled" : ""}`}>
+<div
+  className="navbar-logo"
+  style={{
+    padding: "0 0.5rem",
+    display: "flex",
+    alignItems: "center",
+    height: "56px",
+    minWidth: "80px",
+    margin: "0 1.2rem 0 0",
+    background: "none",      // Sin fondo
+    border: "none",          // Sin borde
+    boxShadow: "none"        // Sin sombra
+  }}
+>
+  <img
+    src="/bbinco.jpeg" // Usa un PNG con fondo transparente
+    alt="BBINCO Logo"
+    style={{
+      height: "44px",
+      width: "auto",
+      display: "block",
+      background: "none",   // Sin fondo en la imagen
+      border: "none",       // Sin borde en la imagen
+      borderRadius: 0       // Sin esquinas redondeadas
+    }}
+  />
+</div>
   <div className="navbar-links">
     <NavLink to="/" end className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
     <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>About</NavLink>
     <a href="/contact">Contact</a>
   </div>
 </nav>
-// ...existing code...
- 
-);
+  );
 }
 
 function Footer() {
