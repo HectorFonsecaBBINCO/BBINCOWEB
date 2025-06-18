@@ -4,39 +4,67 @@ body, .App {
   
 
 }
+@media (max-width: 900px) {
+  body, html {
+    overflow-x: hidden;
+  }
+  .navbar-mobile-menu {
+    width: 50vw !important;
+    max-width: 100vw !important;
+    right: 0;
+    left: auto;
+  }
+}
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #2b2b71;
-  padding: 0.5rem 1.5rem;
+@media (max-width: 900px) {
+  .navbar {
+    position: relative;
+     min-height: 68px;
+    padding: 1.3rem  !important;
+    padding-top: 0.01rem !important;
+  }
+  .navbar-burger {
+    display: block !important;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 201;
+  }
+  .navbar-logo {
+  height: 100px !important;
+  }
+    .navbar-logo img {
+    max-height: 160px !important;
+    max-width: 160px !important;
+  }
+  .navbar-links {
+    display: none !important;
+  }
 }
-
-.navbar-logo img {
-  height: 40px;
-}
-
-.navbar-links {
-  display: flex;
-  gap: 1.5rem;
+@media (min-width: 901px) {
+  .navbar-logo {
+    position: static;
+    justify-content: flex-start !important;
+  }
 }
 
 .navbar-links a {
-  color: #fff;
+  color: #23235c; /* Azul oscuro, puedes usar #222 para gris oscuro */
   text-decoration: none;
   font-weight: 500;
   transition: color 0.2s;
 }
 
-.navbar-links a:hover {
-  color: #61dafb;
+.navbar-links a:hover,
+.navbar-links .active {
+  color: #1560bd; /* Un azul más vivo para hover/activo */
+  border-bottom: 2px solid #1560bd;
 }
-
 .navbar {
   position: sticky;
   top: 0;
@@ -50,7 +78,7 @@ body, .App {
 
 /* Resalta el enlace activo */
 .navbar-links .active {
-  color: #61dafb;
+  color: #23235c;
   border-bottom: 2px solid #61dafb;
 }
 .navbar {
@@ -64,7 +92,7 @@ body, .App {
   /* Puedes reducir el tamaño del logo si quieres */
 }
 
-.navbar-scrolled .navbar-logo img {
+.navbar-scrolled img {
   height: 32px;
   transition: height 0.3s;
 }
@@ -115,4 +143,27 @@ body, .App {
   to {
     transform: rotate(360deg);
   }
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translateY(40px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms, transform 400ms;
+}
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: opacity 400ms, transform 400ms;
+}
+.img-overlay:hover,
+div:hover > .img-overlay {
+  opacity: 1 !important;
 }
