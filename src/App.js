@@ -4,6 +4,8 @@ import './App.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import About from './About';
 import Proyectos from './Proyectos';
+import HeroSection from "./hero";
+
 
 
 
@@ -81,28 +83,28 @@ function Navbar() {
       </button>
 
       {/* Logo SIEMPRE centrado en móvil */}
-     <div
-  className="navbar-logo"
-  style={{
-    flex: "1 1 auto",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    pointerEvents: "auto" // Cambia a auto
-  }}
->
-  <img
-    src="/bbinco_no_Fondo.png"
-    alt="BBINCO Logo"
-    style={{
-      height: "100%",
-      width: "auto",
-      display: "block",
-      objectFit: "contain",
-      maxWidth: "140px" // Limita el ancho en móvil si es necesario
-    }}
-  />
-</div>
+      <div
+        className="navbar-logo"
+        style={{
+          flex: "1 1 auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          pointerEvents: "auto" // Cambia a auto
+        }}
+      >
+        <img
+          src="/bbinco_no_Fondo.png"
+          alt="BBINCO Logo"
+          style={{
+            height: "100%",
+            width: "auto",
+            display: "block",
+            objectFit: "contain",
+            maxWidth: "140px" // Limita el ancho en móvil si es necesario
+          }}
+        />
+      </div>
 
       {/* Enlaces */}
       <div
@@ -201,14 +203,6 @@ function Navbar() {
         }
       `}</style>
     </nav>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="footer">
-      <span>© {new Date().getFullYear()} Todos los derechos reservados de BBINCO</span>
-    </footer>
   );
 }
 
@@ -314,93 +308,210 @@ function Home() {
   return (
     <main>
       <header
-        className="App-hero"
+
         style={{
-          minHeight: "70vh",
-          background: "linear-gradient(135deg, #007bff 0%, #151566  100%, #000  100%)",
+          position: "relative",
+          minHeight: "100vh",
+          width: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
           alignItems: "center",
-          color: "#fff",
-          textAlign: "center",
-          padding: "0 2rem",
-          boxShadow: "0 4px 24px rgba(0,0,0,0.08)"
+          justifyContent: "center",
+          overflow: "hidden",
+          zIndex: 2,
+          background: "#000", // Cambia aquí el color si lo deseas
+          padding: 0
         }}
       >
-        <h1 style={{ fontSize: "3rem", fontWeight: "bold", marginBottom: "1rem", letterSpacing: "2px" }}>
-          BROADBAND INTEGRATION COMPANY
-        </h1>
-        <h2 style={{ fontSize: "1.7rem", fontWeight: "400", marginBottom: "2rem", opacity: 0.95 }}>
-          Soluciones en telecomunicaciones, innovación y tecnología
-        </h2>
-        <a
-          href="#contacto"
+        {/* Contenedor vertical para logo y slogan */}
+        <div
           style={{
-            background: "rgba(255,255,255,0.15)",
-            color: "#fff",
-            padding: "1rem 2.5rem",
-            borderRadius: "30px",
-            fontSize: "1.2rem",
-            textDecoration: "none",
-            fontWeight: "bold",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.12)",
-            border: "2px solid #fff",
-            transition: "background 0.2s, color 0.2s"
-          }}
-          onMouseOver={e => {
-            e.target.style.background = "#fff";
-            e.target.style.color = "#007bff";
-          }}
-          onMouseOut={e => {
-            e.target.style.background = "rgba(255,255,255,0.15)";
-            e.target.style.color = "#fff";
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            zIndex: 2
           }}
         >
-          Contáctanos
-        </a>
+
+          {/* Logo animado */}
+          <img
+            src="/bbinco_no_Fondo.png"
+            alt="BBINCO Logo"
+            style={{
+              width: "180px",
+              filter: "drop-shadow(0 8px 32px #00e0ff88)",
+              animation: "logoPop 1.2s cubic-bezier(.68,-0.55,.27,1.55)"
+            }}
+          />
+
+          {/* Slogan y scroll indicator */}
+          <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
+            <h1
+              style={{
+                color: "#fff",
+                fontSize: "2.8rem",
+                fontWeight: "bold",
+                letterSpacing: "2px",
+                textShadow: "0 4px 32px #00e0ff55"
+              }}
+            >
+              Conectando el futuro, hoy.
+            </h1>
+            <p
+              style={{
+                color: "#b6eaff",
+                fontSize: "1.3rem",
+                marginTop: "1rem"
+              }}
+            >
+              Soluciones inteligentes en telecomunicaciones y tecnología.
+            </p>
+            <div
+              style={{
+                marginTop: "2.5rem",
+                display: "flex",
+                justifyContent: "center",
+                position: "relative"
+              }}
+            >
+              <a
+                href="#contacto"
+                style={{
+                  position: "relative",
+                  display: "inline-block",
+                  padding: "1rem 2.5rem",
+                  fontSize: "1.2rem",
+                  fontWeight: "bold",
+                  color: "#fff",
+                  background: "linear-gradient(90deg, #00e0ff 0%, #007bff 100%)",
+                  border: "none",
+                  borderRadius: "32px",
+                  boxShadow: "0 0 24px #00e0ff88, 0 4px 24px #007bff44",
+                  textShadow: "0 2px 8px #007bff88",
+                  cursor: "pointer",
+                  overflow: "hidden",
+                  transition: "transform 0.18s, box-shadow 0.18s",
+                  animation: "glowBounce 1.8s infinite"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.07)";
+                  e.currentTarget.style.boxShadow =
+                    "0 0 36px #00e0ffcc, 0 8px 32px #007bff66";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "none";
+                  e.currentTarget.style.boxShadow =
+                    "0 0 24px #00e0ff88, 0 4px 24px #007bff44";
+                }}
+              >
+                <span style={{ position: "relative", zIndex: 2 }}>
+                  Contáctanos
+                </span>
+                {/* Destello animado */}
+                <span
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: "-75%",
+                    width: "50%",
+                    height: "100%",
+                    background:
+                      "linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.0) 100%)",
+                    transform: "skewX(-20deg)",
+                    animation: "shine 2.5s infinite"
+                  }}
+                />
+              </a>
+              <style>{`
+                @keyframes glowBounce {
+                  0%, 100% { box-shadow: 0 0 24px #00e0ff88, 0 4px 24px #007bff44; transform: translateY(0);}
+                  50% { box-shadow: 0 0 48px #00e0ffcc, 0 8px 32px #007bff66; transform: translateY(-8px);}
+                }
+                @keyframes shine {
+                  0% { left: -75%; }
+                  60% { left: 110%; }
+                  100% { left: 110%; }
+                }
+              `}</style>
+            </div>
+            {/* Flecha scroll */}
+            <div
+              style={{
+                marginTop: "3rem",
+                animation: "bounce 1.5s infinite"
+              }}
+            >
+              <svg
+                width="32"
+                height="32"
+                fill="none"
+                stroke="#00e0ff"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="8 12 16 20 24 12" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <style>{`
+          @keyframes logoPop {
+            0% { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+            80% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0); }
+          }
+          @keyframes bounce {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(18px);}
+          }
+        `}</style>
       </header>
-<section style={{
-  background: "#f8fafc",
-  padding: "3rem 1rem",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center"
-}}>
-  <h2 style={{
-    fontWeight: "bold",
-    fontSize: "2.2rem",
-    marginBottom: "2rem",
-    color: "#007bff"
-  }}>
-    Resultados que hablan por nosotros
-  </h2>
-  <div style={{
-    display: "flex",
-    flexWrap: "wrap",
-    gap: "2.5rem",
-    justifyContent: "center"
-  }}>
-    {[
-      { number: "+100", label: "Proyectos realizados" },
-      { number: "10", label: "Años de experiencia" },
-      { number: "24/7", label: "Soporte" },
-      { number: "+50", label: "Clientes felices" }
-    ].map((item, idx) => (
-      <div key={idx} style={{
-        background: "#fff",
-        borderRadius: "14px",
-        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
-        padding: "2rem 2.5rem",
-        minWidth: "180px",
-        textAlign: "center"
+
+
+
+      <section style={{
+        background: "#f8fafc",
+        padding: "3rem 1rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
       }}>
-        <div style={{ fontSize: "2.8rem", fontWeight: "bold", color: "#1560bd" }}>{item.number}</div>
-        <div style={{ fontSize: "1.1rem", color: "#23235c", marginTop: "0.5rem" }}>{item.label}</div>
-      </div>
-    ))}
-  </div>
-</section>
+        <h2 style={{
+          fontWeight: "bold",
+          fontSize: "2.2rem",
+          marginBottom: "2rem",
+          color: "#007bff"
+        }}>
+          Resultados que hablan por nosotros
+        </h2>
+        <div style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "2.5rem",
+          justifyContent: "center"
+        }}>
+          {[
+            { number: "+100", label: "Proyectos realizados" },
+            { number: "10", label: "Años de experiencia" },
+            { number: "24/7", label: "Soporte" },
+            { number: "+50", label: "Clientes felices" }
+          ].map((item, idx) => (
+            <div key={idx} style={{
+              background: "#fff",
+              borderRadius: "14px",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+              padding: "2rem 2.5rem",
+              minWidth: "180px",
+              textAlign: "center"
+            }}>
+              <div style={{ fontSize: "2.8rem", fontWeight: "bold", color: "#1560bd" }}>{item.number}</div>
+              <div style={{ fontSize: "1.1rem", color: "#23235c", marginTop: "0.5rem" }}>{item.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
       <section style={{ minHeight: "60vh", padding: "2rem", background: "#e0e0e0" }}>
         <h2 style={{ textAlign: "center", marginBottom: "2rem" }}>Proyectos realizados</h2>
         <div
@@ -488,7 +599,7 @@ function Home() {
             justifyContent: "center"
           }}
         >
-          {/* Fondo animado tipo circuito */}
+
           <div style={{
             position: "absolute",
             inset: 0,
@@ -569,10 +680,11 @@ function Home() {
         </section>
       </section>
       <ContactSection />
+
+
     </main>
   );
 }
-
 // ...existing code...
 
 function BrandsSection() {
@@ -646,12 +758,22 @@ function BrandsSection() {
   );
 }
 
+function Footer() {
+  return (
+    <footer className="footer">
+      <span>© {new Date().getFullYear()} Todos los derechos reservados de BBINCO</span>
+    </footer>
+  );
+}
+
+
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Navbar />
+      <HeroSection />
+      <div className="App" style={{ position: "relative", zIndex: 1 }}>
 
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -665,9 +787,6 @@ function App() {
 }
 
 
-// ...existing code...
-
-// ...en tu componente App o Home, justo antes del Footer:
 
 
 export default App;
