@@ -5,6 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import About from './About';
 import Proyectos from './Proyectos';
 import HeroSection from "./hero";
+import PressSection from "./PressSection";
 
 
 
@@ -88,9 +89,7 @@ function Navbar() {
         style={{
           flex: "1 1 auto",
           display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          pointerEvents: "auto" // Cambia a auto
+          pointerEvents: "auto"
         }}
       >
         <img
@@ -101,6 +100,7 @@ function Navbar() {
             width: "auto",
             display: "block",
             objectFit: "contain",
+            justifyContent: "flex-end",
             maxWidth: "140px" // Limita el ancho en móvil si es necesario
           }}
         />
@@ -308,33 +308,32 @@ function Home() {
   return (
     <main>
       <header
-
         style={{
-          position: "relative",
           minHeight: "100vh",
           width: "100%",
+          position: "relative",
+          backgroundImage: "url('/Hoteles/Rosewood.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          overflow: "hidden",
-          zIndex: 2,
-          background: "#000", // Cambia aquí el color si lo deseas
-          padding: 0
         }}
       >
-        {/* Contenedor vertical para logo y slogan */}
         <div
           style={{
+            position: "relative",
+            zIndex: 1,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            minHeight: "100vh",
             width: "100%",
-            zIndex: 2
+            background: "rgba(0,0,0,0.35)", // Oscurece la imagen para mejor contraste
           }}
         >
-
-          {/* Logo animado */}
           <img
             src="/bbinco_no_Fondo.png"
             alt="BBINCO Logo"
@@ -345,7 +344,6 @@ function Home() {
             }}
           />
 
-          {/* Slogan y scroll indicator */}
           <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
             <h1
               style={{
@@ -356,7 +354,7 @@ function Home() {
                 textShadow: "0 4px 32px #00e0ff55"
               }}
             >
-              Conectando el futuro, hoy.
+              Conectando el futuro,
             </h1>
             <p
               style={{
@@ -424,16 +422,25 @@ function Home() {
                 />
               </a>
               <style>{`
-                @keyframes glowBounce {
-                  0%, 100% { box-shadow: 0 0 24px #00e0ff88, 0 4px 24px #007bff44; transform: translateY(0);}
-                  50% { box-shadow: 0 0 48px #00e0ffcc, 0 8px 32px #007bff66; transform: translateY(-8px);}
-                }
-                @keyframes shine {
-                  0% { left: -75%; }
-                  60% { left: 110%; }
-                  100% { left: 110%; }
-                }
-              `}</style>
+              @keyframes glowBounce {
+                0%, 100% { box-shadow: 0 0 24px #00e0ff88, 0 4px 24px #007bff44; transform: translateY(0);}
+                50% { box-shadow: 0 0 48px #00e0ffcc, 0 8px 32px #007bff66; transform: translateY(-8px);}
+              }
+              @keyframes shine {
+                0% { left: -75%; }
+                60% { left: 110%; }
+                100% { left: 110%; }
+              }
+              @keyframes logoPop {
+                0% { transform: scale(0.7) rotate(-10deg); opacity: 0; }
+                80% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+                100% { transform: scale(1) rotate(0); }
+              }
+              @keyframes bounce {
+                0%, 100% { transform: translateY(0);}
+                50% { transform: translateY(18px);}
+              }
+            `}</style>
             </div>
             {/* Flecha scroll */}
             <div
@@ -456,19 +463,7 @@ function Home() {
             </div>
           </div>
         </div>
-        <style>{`
-          @keyframes logoPop {
-            0% { transform: scale(0.7) rotate(-10deg); opacity: 0; }
-            80% { transform: scale(1.1) rotate(2deg); opacity: 1; }
-            100% { transform: scale(1) rotate(0); }
-          }
-          @keyframes bounce {
-            0%, 100% { transform: translateY(0);}
-            50% { transform: translateY(18px);}
-          }
-        `}</style>
       </header>
-
 
 
       <section style={{
@@ -527,8 +522,10 @@ function Home() {
             { img: "/Hoteles/Waldorf.jpg", title: "Waldorf", desc: "Redes y automatización" },
             { img: "/Hoteles/Four Seasons.jpg", title: "Four Seasons", desc: "Domótica y seguridad" },
             { img: "/Hoteles/Rosewood.jpg", title: "Rosewood", desc: "Infraestructura TI" },
-            { img: "/Hoteles/Chileno.jpg", title: "Chileno", desc: "WiFi y control de acceso" },
-            // Agrega más proyectos si lo deseas
+            { img: "/Hoteles/Four Seasons.jpg", title: "Four Seasons", desc: "Domótica y seguridad" },
+            { img: "/Hoteles/Rosewood.jpg", title: "Rosewood", desc: "Infraestructura TI" },
+                        { img: "/Hoteles/Waldorf.jpg", title: "Waldorf", desc: "Redes y automatización" },
+            
           ].map((proy, idx) => (
             <div
               key={idx}
@@ -696,6 +693,7 @@ function BrandsSection() {
     { name: "Panduit", src: "/logos/panduit logo.png" },
     { name: "RTI", src: "/logos/rti logo.jpg" },
     { name: "niagara", src: "/logos/niagara logo.png" },
+    { name: "honeywell", src: "/logos/Honeywell-Logo.png" },
     { name: "c4", src: "/logos/c4 logo.png" },
     { name: "Ruckus", src: "/logos/Ruckus logo.png" },
 
@@ -760,28 +758,116 @@ function BrandsSection() {
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{
+      background: "#f8fafc",
+      padding: "2rem 1rem 1rem 1rem",
+      textAlign: "center",
+      borderTop: "1px solid #e3e9f7"
+    }}>
+      <div style={{ marginBottom: "1rem", display: "flex", justifyContent: "center", gap: "2rem" }}>
+        <a href="https://www.linkedin.com/company/bbinco" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg width="28" height="28" fill="none" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="6" fill="#0077b5" />
+            <path d="M10.67 13.33h3.33v1.33h.05c.46-.87 1.6-1.79 3.3-1.79 3.53 0 4.18 2.32 4.18 5.33v6h-3.33v-5.33c0-1.27-.02-2.9-1.77-2.9-1.77 0-2.04 1.38-2.04 2.8v5.43h-3.33v-11.87zm-3.33 0h3.33v11.87h-3.33v-11.87zm1.67-5.33c1.07 0 1.93.87 1.93 1.93 0 1.07-.87 1.93-1.93 1.93-1.07 0-1.93-.87-1.93-1.93 0-1.07.87-1.93 1.93-1.93z" fill="#fff" />
+          </svg>
+        </a>
+        <a href="https://www.instagram.com/bbinco" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg width="28" height="28" fill="none" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="6" fill="#E1306C" />
+            <path d="M16 11.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zm0 7.92a3.12 3.12 0 1 1 0-6.24 3.12 3.12 0 0 1 0 6.24zm6.24-8.16a1.12 1.12 0 1 1-2.24 0 1.12 1.12 0 0 1 2.24 0zm3.12 1.14c-.07-1.48-.41-2.8-1.5-3.89-1.09-1.09-2.41-1.43-3.89-1.5-1.53-.09-6.13-.09-7.66 0-1.48.07-2.8.41-3.89 1.5-1.09 1.09-1.43 2.41-1.5 3.89-.09 1.53-.09 6.13 0 7.66.07 1.48.41 2.8 1.5 3.89 1.09 1.09 2.41 1.43 3.89 1.5 1.53.09 6.13.09 7.66 0 1.48-.07 2.8-.41 3.89-1.5 1.09-1.09 1.43-2.41 1.5-3.89.09-1.53.09-6.13 0-7.66zm-2 .93c.05 1.18.06 4.85 0 6.03-.06 1.27-.36 1.96-.6 2.42-.29.53-.64.88-1.17 1.17-.46.24-1.15.54-2.42.6-1.18.05-4.85.06-6.03 0-1.27-.06-1.96-.36-2.42-.6-.53-.29-.88-.64-1.17-1.17-.24-.46-.54-1.15-.6-2.42-.05-1.18-.06-4.85 0-6.03.06-1.27.36-1.96.6-2.42.29-.53.64-.88 1.17-1.17.46-.24 1.15-.54 2.42-.6 1.18-.05 4.85-.06 6.03 0 1.27.06 1.96.36 2.42.6.53.29.88.64 1.17 1.17.24.46.54 1.15.6 2.42z" fill="#fff" />
+          </svg>
+        </a>
+        <a href="https://wa.me/5219999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg width="28" height="28" fill="none" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="6" fill="#25D366" />
+            <path d="M16 8.5a7.5 7.5 0 0 0-6.4 11.5l-1.1 3.2 3.3-1.1A7.5 7.5 0 1 0 16 8.5zm0 13.5c-1.2 0-2.4-.3-3.4-.9l-.2-.1-2 .7.7-2-.1-.2A6 6 0 1 1 16 22zm3.3-4.5c-.2-.1-1.2-.6-1.3-.7-.2-.1-.3-.1-.5.1-.1.1-.5.7-.6.8-.1.1-.2.2-.4.1-.2-.1-.8-.3-1.5-.9-.5-.5-.9-1.1-1-1.3-.1-.2 0-.3.1-.4.1-.1.2-.3.3-.4.1-.1.1-.2.2-.3.1-.1.1-.2.2-.3.1-.1.1-.2 0-.4-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.4c-.1 0-.3 0-.4.2-.1.2-.5.5-.5 1.2 0 .7.5 1.4 1.1 2.1.7.8 1.6 1.4 2.6 1.7.3.1.6.1.8.1.3 0 .5 0 .7-.1.2-.1.5-.4.6-.7.1-.2.1-.4.1-.5 0-.1-.1-.1-.2-.2z" fill="#fff" />
+          </svg>
+        </a>
+        <a href="https://facebook.com/bbinco" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <svg width="28" height="28" fill="none" viewBox="0 0 32 32">
+            <rect width="32" height="32" rx="6" fill="#1877f3" />
+            <path d="M21.5 16h-3v8h-3v-8h-2v-3h2v-2c0-2.1 1.3-3 3.2-3 .9 0 1.8.1 1.8.1v2h-1.2c-.9 0-1.1.4-1.1 1v1.9h2.4l-.3 3z" fill="#fff" />
+          </svg>
+        </a>
+      </div>
       <span>© {new Date().getFullYear()} Todos los derechos reservados de BBINCO</span>
     </footer>
   );
 }
 
+function CookiesBanner() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const accepted = localStorage.getItem("cookiesAccepted");
+    if (!accepted) setVisible(true);
+  }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    setVisible(false);
+  };
+
+  if (!visible) return null;
+
+  return (
+    <div
+      style={{
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        width: "100%",
+        background: "rgba(0,34,68,0.98)",
+        color: "#fff",
+        padding: "1.2rem 1rem",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 9999,
+        boxShadow: "0 -2px 12px rgba(0,0,0,0.12)"
+      }}
+    >
+      <span style={{ marginRight: "1.5rem", fontSize: "1rem" }}>
+        Utilizamos cookies para mejorar tu experiencia en nuestro sitio. Al continuar navegando, aceptas nuestra política de cookies.
+      </span>
+      <button
+        onClick={handleAccept}
+        style={{
+          background: "linear-gradient(90deg, #00e0ff 0%, #007bff 100%)",
+          color: "#fff",
+          border: "none",
+          borderRadius: "24px",
+          padding: "0.7rem 1.8rem",
+          fontWeight: "bold",
+          fontSize: "1rem",
+          cursor: "pointer",
+          boxShadow: "0 2px 8px #007bff44"
+        }}
+      >
+        Aceptar
+      </button>
+    </div>
+  );
+}
 
 function App() {
   return (
     <Router>
-      <HeroSection />
+
       <div className="App" style={{ position: "relative", zIndex: 1 }}>
 
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/proyectos" element={<Proyectos />} />
         </Routes>
         <BrandsSection />
+        <PressSection />
         <Footer />
       </div>
+      <CookiesBanner />
     </Router>
   );
 }

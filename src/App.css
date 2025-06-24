@@ -47,10 +47,7 @@ html, body, #root {
       justify-content: center !important;
       pointer-events: none;
     }
-    .navbar-logo img {
-    max-height: 160px !important;
-    max-width: 160px !important;
-  }
+  
   .navbar-links {
     display: none !important;
   }

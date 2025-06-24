@@ -1,41 +1,34 @@
-import React, { useRef, useEffect } from "react";
-import NET from "vanta/dist/vanta.net.min";
-import * as THREE from "three";
+import React from "react";
 
 function HeroSection() {
-  const vantaRef = useRef(null);
-
-  useEffect(() => {
-    const vantaEffect = NET({
-      el: vantaRef.current,
-      THREE,
-      mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.0,
-      minWidth: 200.0,
-      scale: 1.0,
-      scaleMobile: 1.0,
-      color: "blue",
-      backgroundColor: "#0056b3",
-      points: 3.00
-    });
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, []);
-
   return (
-    <header ref={vantaRef} style={{ minHeight: "100vh", width: "100%", position: "relative" }}>
-      <div style={{
+    <header
+      style={{
+        minHeight: "100vh",
+        width: "100%",
         position: "relative",
-        zIndex: 1,
+        backgroundImage: "url('/Hoteles/Rosewood.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        minHeight: "100vh"
-      }}>
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+          width: "100%",
+          background: "rgba(0,0,0,0.35)", // Oscurece la imagen para mejor contraste
+        }}
+      >
         <img
           src="/bbinco_no_Fondo.png"
           alt="BBINCO Logo"
@@ -45,6 +38,7 @@ function HeroSection() {
             animation: "logoPop 1.2s cubic-bezier(.68,-0.55,.27,1.55)"
           }}
         />
+        
         <div style={{ marginTop: "2.5rem", textAlign: "center" }}>
           <h1
             style={{
@@ -55,7 +49,7 @@ function HeroSection() {
               textShadow: "0 4px 32px #00e0ff55"
             }}
           >
-            Conectando el futuro, hoy.
+            Conectando el futuro, 
           </h1>
           <p
             style={{
